@@ -1,0 +1,12 @@
+# Literature Positioning Map
+
+The table maps the empirical study against adjacent Safe RL and RL evaluation lines. It is intended for paper positioning rather than for claiming algorithmic novelty.
+
+| research line | representative examples | primary object | evaluation gap | study role |
+| --- | ---: | ---: | ---: | ---: |
+| Expected-cost CMDP optimization | CPO; PID Lagrangian; FOCOPS; CVPO; backward-value constraints | Expected cumulative cost, budgeted cost, or state-specific cost constraints | Return-cost summaries can leave episode-level violation frequency and persistence implicit. | Audits whether mature expected-cost baselines also improve zero-violation metrics. |
+| Safe exploration and intervention | Safe exploration; EMCC; shielding; safety layers; recovery policies; CBF filters | Unsafe states, actions, resets, or online intervention decisions | Mechanism papers often target direct prevention rather than benchmark reporting coverage. | Provides diagnostic readouts that intervention methods can be compared against. |
+| Risk, chance, and tail objectives | Percentile risk; chance-constrained MPC; adaptive chance safeguards; coherent risk; WCSAC | Tail probability, worst-case behavior, or distributional safety criteria | Risk objectives motivate multiple safety summaries, but benchmark tables often collapse them. | Connects zero-violation frequency with tail severity and temporal persistence. |
+| Verified and hard-safety controllers | Verified Safe RL; robust CBF methods; CRABS; action projection | Reachability, state constraints, or formally checked safe horizons | Formal guarantees and benchmark empirical metrics answer different questions. | Keeps empirical zero-violation reporting separate from guarantee claims. |
+| Benchmarks, datasets, and reliability | Safety-Gymnasium; OmniSafe; GUARD; SafeOR-Gym; Robust Gymnasium; D4RL; RL Unplugged | Task coverage, algorithm coverage, reproducibility, intervals, and claim boundaries | Benchmark substrates need explicit metric panels and scoped interpretation. | Adds an episode-level zero-violation reporting layer to mature-baseline evaluation. |
+| This empirical study | Six mature baselines; three Safety-Gymnasium environments; three seeds | Return, mean cost, safe rate, nonzero frequency, tail severity, and run length | Focuses on evidence boundaries rather than a new optimizer or impossibility theorem. | Maps what the reported baseline matrix supports and what it does not support. |

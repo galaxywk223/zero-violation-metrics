@@ -1,0 +1,12 @@
+# Raw or heavy primary outputs are intentionally excluded.
+*.zip
+*.pt
+*.pth
+*.ckpt
+*.log
+results/
+logs/
+policy_parameters/
+primary_outputs/
+__pycache__/
+*.pyc
