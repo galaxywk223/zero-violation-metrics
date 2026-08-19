@@ -30,6 +30,12 @@
 | `tables/protocol_coverage_matrix.md` | Coverage and claim-boundary table for methods, tasks, runs, metrics, and artifacts. |
 | `tables/claim_flow.md` | Paper-level chain from episode measurement to metric families, evidence, supported claims, and claim boundaries. |
 | `tables/claim_boundary.md` | Claim boundary and unsupported readings. |
+| `tables/claim_evidence_map.md` | Claim-to-evidence mapping for the reported matrix. |
+| `tables/key_numbers.md` | Key reported numbers and their evidence roles. |
+| `tables/method_metric_rank_profile.md` | Method rank profile across the reported metrics. |
+| `tables/method_rankings.md` | Descriptive method rankings by aggregate metric families. |
+| `tables/metric_disagreement_summary.md` | Summary of metric-dependent ordering differences. |
+| `tables/statistical_reporting_checklist.md` | Checklist for descriptive uncertainty and claim boundaries. |
 
 ## Core Figures
 
@@ -54,6 +60,14 @@
 | `figures/return_vs_safe_rate.png` | Reward-safety trade-off scatter plot. |
 | `figures/relative_to_ppo_tradeoffs.png` | Safety gains and return retention relative to `PPO`. |
 | `figures/tradeoff_main_panel.png` | Two-panel reward-safety trade-off figure combining return-safe-rate placement with relative-to-`PPO` effect sizes. |
+| `figures/claim_aligned_main_evidence.png` | Main-evidence panel aligned with the supported claim boundary. |
+| `figures/env_method_heatmap.png` | Environment-method safety-rate heatmap. |
+| `figures/expected_cost_zero_violation_separation.png` | Expected-cost versus zero-violation separation figure. |
+| `figures/main_findings_summary.png` | Compact visual summary of the main empirical findings. |
+| `figures/mean_cost_vs_nonzero_frequency.png` | Mean-cost and nonzero-frequency comparison. |
+| `figures/metric_disagreement_summary.png` | Metric-ordering disagreement summary. |
+| `figures/statistical_reporting_ladder.png` | Statistical-reporting ladder from point estimates to scoped uncertainty. |
+| `figures/tail_and_run_metrics.png` | Tail-severity and temporal-persistence comparison. |
 | `figures/metric_correlation_heatmap.png` | Metric-correlation heatmap showing non-equivalence among safety metrics. |
 | `figures/env_tradeoff_facets.png` | Environment-sliced reward-safe-rate facets. |
 | `figures/bootstrap_confidence_intervals.png` | Bootstrap uncertainty context for core metrics. |
