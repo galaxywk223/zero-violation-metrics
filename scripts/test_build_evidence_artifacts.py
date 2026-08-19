@@ -79,6 +79,18 @@ def test_read_metric_rows_uses_aggregate_archive_contract():
     assert loaded[0]["status"] == "completed"
 
 
+def test_read_metric_rows_accepts_public_json_input():
+    with tempfile.TemporaryDirectory() as tmp:
+        path = Path(tmp) / "metric_table.json"
+        rows = make_rows()
+        path.write_text(json.dumps(rows), encoding="utf-8")
+
+        loaded = read_metric_rows(path)
+
+    assert len(loaded) == 54
+    assert "checkpoint" not in loaded[0]
+
+
 def test_build_artifacts_writes_paper_pack_without_results_dir():
     with tempfile.TemporaryDirectory() as tmp:
         repo_root = Path(tmp)

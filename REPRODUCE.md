@@ -10,15 +10,21 @@ The aggregate-evidence generator uses standard Python data-analysis packages:
 
 No training framework is required to regenerate the derived tables and figures from the aggregate metric table.
 
-## Input Contract
+Install the pinned dependency ranges in a clean environment:
 
-The generator expects an aggregate archive containing:
-
-```text
-summaries/metric_table.json
+```powershell
+python -m pip install -r requirements.txt
 ```
 
-The archive is an external input and is not stored in this repository. Reproduction commands pass its path explicitly with `--archive-path`.
+## Input Contract
+
+The public repository includes the sanitized aggregate input:
+
+```text
+data/metric_table.json
+```
+
+The generator also accepts an external archive containing `summaries/metric_table.json` for compatible private or historical inputs.
 
 The table must contain 54 completed rows:
 
@@ -33,7 +39,7 @@ Required fields include method, environment, seed, status, evaluation status, tr
 Run the structural check before rebuilding artifacts:
 
 ```powershell
-python scripts/build_evidence_artifacts.py --archive-path <aggregate-metric-table-archive> --check-only
+python scripts/build_evidence_artifacts.py --input-path data/metric_table.json --check-only
 ```
 
 The expected validation summary is:
@@ -54,7 +60,7 @@ check_only=true
 Regenerate all paper-facing aggregate evidence:
 
 ```powershell
-python scripts/build_evidence_artifacts.py --archive-path <aggregate-metric-table-archive> --repo-root .
+python scripts/build_evidence_artifacts.py --input-path data/metric_table.json --repo-root .
 ```
 
 The command updates:
@@ -78,8 +84,6 @@ The test verifies that the generator can create tables, figures, notes, and outl
 
 The reproduction path regenerates aggregate paper evidence only. It does not retrain policies, rerun simulators, modify Safe RL libraries, or require policy parameter files.
 
-## Submission Boundary
+## Public Evidence Boundary
 
-During submission review, repository URLs should be supplied only through venue-approved supporting-material mechanisms. The manuscript text should refer to aggregate reproducibility material without exposing author-identifying repository metadata.
-
-The aggregate package is designed to support inspection of the reported evidence, not to serve as a hidden extension of the experiment section. Regeneration scripts operate on the aggregate metric-table contract and do not depend on primary execution directories.
+The aggregate package supports inspection and regeneration of the reported evidence. It does not support independent retraining, checkpoint-selection verification, or recovery of primary run traces. Regeneration scripts operate on the aggregate metric-table contract and do not depend on primary execution directories.

@@ -1,5 +1,11 @@
 # Artifact Manifest
 
+## Public Input
+
+| Path | Role |
+| --- | --- |
+| `data/metric_table.json` | Sanitized 54-row aggregate input used to regenerate the paper-facing evidence. It contains no checkpoint paths, machine paths, logs, or primary traces. |
+
 ## Core Tables
 
 | Path | Role |

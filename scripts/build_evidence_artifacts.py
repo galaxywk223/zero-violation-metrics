@@ -266,8 +266,9 @@ LITERATURE_METRIC_COVERAGE_ROWS = (
 
 
 def build_parser() -> ArgumentParser:
-    parser = ArgumentParser(description="Build aggregate evidence artifacts from an aggregate metric archive.")
-    parser.add_argument("--archive-path", type=Path, required=True)
+    parser = ArgumentParser(description="Build aggregate evidence artifacts from a sanitized metric table or archive.")
+    parser.add_argument("--input-path", type=Path, help="JSON metric table or archive containing summaries/metric_table.json.")
+    parser.add_argument("--archive-path", type=Path, help="Deprecated alias for --input-path.")
     parser.add_argument("--repo-root", type=Path, default=REPO_ROOT)
     parser.add_argument("--check-only", action="store_true")
     return parser
@@ -280,22 +281,28 @@ def resolve_path(path: Path, base: Path) -> Path:
 
 
 def resolve_args(args: Namespace) -> Namespace:
+    if bool(args.input_path) == bool(args.archive_path):
+        raise ValueError("provide exactly one of --input-path or --archive-path")
+    args.input_path = args.input_path or args.archive_path
     args.repo_root = args.repo_root.resolve()
-    args.archive_path = resolve_path(args.archive_path, args.repo_root).resolve()
+    args.input_path = resolve_path(args.input_path, args.repo_root).resolve()
     return args
 
 
-def read_metric_rows(archive_path: Path) -> list[dict[str, Any]]:
-    if not archive_path.exists():
-        raise FileNotFoundError(f"Aggregate metric-table archive not found: {archive_path}")
-    with zipfile.ZipFile(archive_path) as archive:
-        try:
-            payload = archive.read("summaries/metric_table.json")
-        except KeyError as exc:
-            raise KeyError("Aggregate metric-table archive does not contain summaries/metric_table.json") from exc
+def read_metric_rows(input_path: Path) -> list[dict[str, Any]]:
+    if not input_path.exists():
+        raise FileNotFoundError(f"Aggregate metric-table input not found: {input_path}")
+    if input_path.suffix.lower() == ".json":
+        payload = input_path.read_bytes()
+    else:
+        with zipfile.ZipFile(input_path) as archive:
+            try:
+                payload = archive.read("summaries/metric_table.json")
+            except KeyError as exc:
+                raise KeyError("Aggregate metric-table archive does not contain summaries/metric_table.json") from exc
     rows = json.loads(payload.decode("utf-8"))
     if not isinstance(rows, list):
-        raise ValueError("summaries/metric_table.json must contain a list of rows")
+        raise ValueError("metric-table input must contain a list of rows")
     return rows
 
 
@@ -3628,7 +3635,7 @@ def build_artifacts(rows: list[dict[str, Any]], repo_root: Path, validation: dic
 
 def main(argv: list[str] | None = None) -> int:
     args = resolve_args(build_parser().parse_args(argv))
-    rows = read_metric_rows(args.archive_path)
+    rows = read_metric_rows(args.input_path)
     validation = validate_rows(rows)
     print("metric_archive_valid=true")
     print(f"rows={validation['rows']}")

@@ -12,15 +12,17 @@ The package summarizes a reported mature-baseline evaluation matrix:
 
 The evaluated methods are `PPO`, `PPOLag`, `FOCOPS`, `CPO`, `CPPOPID`, and `PPOSaute`. The environments are `SafetyPointGoal1-v0`, `SafetyPointButton1-v0`, and `SafetyCarGoal1-v0`.
 
-The repository scope is paper-facing and aggregate-only. It stores derived tables, figures, notes, and generation scripts. Primary simulator traces, policy parameters, large result directories, and machine-specific archives are excluded.
+The repository scope is paper-facing and aggregate-only. It stores the sanitized 54-cell metric input, derived tables, figures, notes, and generation scripts. Primary simulator traces, policy parameters, large result directories, checkpoints, and machine-specific archives are excluded.
 
 ## Contents
 
 - `tables/`: Markdown tables for method-level metrics, environment-method metrics, rankings, seed variability, metric correlations, bootstrap confidence intervals, relative-to-`PPO` trade-offs, main findings, literature positioning, paper positioning, literature-to-metric coverage, metric-family mapping, method trade-off quadrants, method safety signatures, reporting-protocol upgrade, environment case studies, environment-method scorecards, protocol coverage, claim flow, and claim boundaries.
 - `figures/`: Paper figures for the metric protocol, literature positioning, paper positioning, literature-to-metric coverage, main findings, metric-family mapping, method trade-off quadrants, reporting-protocol upgrade, environment case studies, environment-method scorecards, protocol coverage, three-axis trade-off, environment zero-violation gap, method safety signatures, claim-evidence flow, environment metric profiles, reward-safety trade-offs, metric correlations, environment facets, seed variability, bootstrap intervals, Pareto frontier, method profiles, and claim boundaries.
+- `data/metric_table.json`: Sanitized aggregate input containing the 54 reported method-environment-seed rows. Checkpoint paths and machine-specific metadata are omitted.
 - `notes/`: Evidence summary and supported / unsupported claim boundaries.
 - `outline/`: Paper skeleton for the empirical study.
 - `scripts/`: Artifact-generation script and lightweight validation test.
+- `requirements.txt`: Minimal Python dependencies for generation and validation.
 - `ARTIFACT_MANIFEST.md`: File-level manifest and role of each artifact group.
 - `REPRODUCE.md`: Regeneration and validation instructions.
 
@@ -43,23 +45,15 @@ Unsupported claims:
 
 ## Evidence and Reproducibility Boundary
 
-The generator expects a compatible aggregate metric-table archive containing `summaries/metric_table.json`. The aggregate metric table is sufficient to reproduce the derived paper tables and figures in this repository.
+The generator accepts the checked-in `data/metric_table.json` directly or a compatible archive containing `summaries/metric_table.json`. The aggregate metric table is sufficient to reproduce the derived paper tables and figures in this repository.
 
-The aggregate archive is an external input and is intentionally excluded from the repository. Reproduction commands should pass the archive path explicitly with `--archive-path`. The repository does not require distribution of primary simulator traces, policy parameters, large result directories, or machine-specific archives. This boundary keeps the evidence small, inspectable, and aligned with the paper's empirical claim: a reporting and metric-separation claim over a reported baseline matrix.
+The public input contains aggregate metrics only. The repository does not distribute primary simulator traces, policy parameters, checkpoints, large result directories, or machine-specific archives. This boundary keeps the evidence small, inspectable, and aligned with the paper's empirical claim: a reporting and metric-separation claim over a reported baseline matrix.
 
-## Anonymity and Release Boundary
+## Public Release Boundary
 
-Submissions should cite this package only as supporting material when venue policy permits non-identifying artifacts. Author-identifying repository URLs are intentionally omitted from manuscript text during submission review.
+This repository is the public supporting-material package for the accepted PRICAI 2026 paper. It contains the aggregate evidence needed to inspect and regenerate the paper-facing tables, figures, and evidence summary.
 
-The public-release version is intended to contain:
-
-- aggregate metric tables;
-- generated paper figures;
-- evidence notes and claim-boundary notes;
-- deterministic generation and validation scripts;
-- reproduction instructions for aggregate evidence.
-
-The public-release version is not intended to contain:
+The public package is not intended to contain:
 
 - primary training-result directories;
 - primary simulator traces;
