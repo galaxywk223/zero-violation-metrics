@@ -1,6 +1,6 @@
-# Episode-Level Zero-Violation Metrics Supporting Evidence
+# Episode-Level Zero-Violation Metrics: Code and Data
 
-This repository contains aggregate supporting evidence for an empirical study of episode-level zero-violation metrics in Safe Reinforcement Learning.
+This repository contains code, run-level records, and derived evidence for an empirical study of episode-level zero-violation metrics in Safe Reinforcement Learning.
 
 ## Scope
 
@@ -12,19 +12,22 @@ The package summarizes a reported mature-baseline evaluation matrix:
 
 The evaluated methods are `PPO`, `PPOLag`, `FOCOPS`, `CPO`, `CPPOPID`, and `PPOSaute`. The environments are `SafetyPointGoal1-v0`, `SafetyPointButton1-v0`, and `SafetyCarGoal1-v0`.
 
-The repository scope is paper-facing and aggregate-only. It stores the sanitized 54-cell metric input, derived tables, figures, notes, and generation scripts. Primary simulator traces, policy parameters, large result directories, checkpoints, and machine-specific archives are excluded.
+The public data cover all 54 method-environment-seed cells. Each run includes its configuration, training curve, and deterministic 50-episode evaluation record. The fixed training-code snapshot is available at [`zero-violation-paper-workbench@04966dd`](https://github.com/galaxywk223/zero-violation-paper-workbench/tree/04966dd601c3778e14638b5af82f498c4812f29d/experiments).
 
 ## Contents
 
 - `tables/`: Markdown tables for method-level metrics, environment-method metrics, rankings, seed variability, metric correlations, bootstrap confidence intervals, relative-to-`PPO` trade-offs, main findings, literature positioning, paper positioning, literature-to-metric coverage, metric-family mapping, method trade-off quadrants, method safety signatures, reporting-protocol upgrade, environment case studies, environment-method scorecards, protocol coverage, claim flow, and claim boundaries.
 - `figures/`: Paper figures for the metric protocol, literature positioning, paper positioning, literature-to-metric coverage, main findings, metric-family mapping, method trade-off quadrants, reporting-protocol upgrade, environment case studies, environment-method scorecards, protocol coverage, three-axis trade-off, environment zero-violation gap, method safety signatures, claim-evidence flow, environment metric profiles, reward-safety trade-offs, metric correlations, environment facets, seed variability, bootstrap intervals, Pareto frontier, method profiles, and claim boundaries.
-- `data/metric_table.json`: Sanitized aggregate input containing the 54 reported method-environment-seed rows. Checkpoint paths and machine-specific metadata are omitted.
+- `data/runs/`: Portable configuration, training-curve, and per-episode evaluation files for all 54 runs.
+- `data/run_manifest.json`: Matrix definition, artifact paths, counts, and source archive checksum.
+- `data/metric_table.json`: Sanitized 54-row aggregate input used by the evidence generator.
 - `notes/`: Evidence summary and supported / unsupported claim boundaries.
 - `outline/`: Paper skeleton for the empirical study.
-- `scripts/`: Artifact-generation script and lightweight validation test.
+- `scripts/`: Run-data sanitizer, public-data validator, artifact generator, and tests.
 - `requirements.txt`: Minimal Python dependencies for generation and validation.
 - `ARTIFACT_MANIFEST.md`: File-level manifest and role of each artifact group.
 - `REPRODUCE.md`: Regeneration and validation instructions.
+- [Release `pricai2026-camera-ready-data-v1`](https://github.com/galaxywk223/zero-violation-metrics/releases/tag/pricai2026-camera-ready-data-v1): Complete sanitized Round185 export and SHA-256 checksum.
 
 ## Claim Boundary
 
@@ -43,23 +46,18 @@ Unsupported claims:
 - The matrix does not prove that any prototype zero-violation method is effective.
 - The matrix does not establish a universal Pareto frontier for Safe RL.
 
-## Evidence and Reproducibility Boundary
+## Validation and Regeneration
 
-The generator accepts the checked-in `data/metric_table.json` directly or a compatible archive containing `summaries/metric_table.json`. The aggregate metric table is sufficient to reproduce the derived paper tables and figures in this repository.
+Validate the public run-level records:
 
-The public input contains aggregate metrics only. The repository does not distribute primary simulator traces, policy parameters, checkpoints, large result directories, or machine-specific archives. This boundary keeps the evidence small, inspectable, and aligned with the paper's empirical claim: a reporting and metric-separation claim over a reported baseline matrix.
+```powershell
+python scripts/validate_public_run_data.py
+```
 
-## Public Release Boundary
+Regenerate the reported tables and figures:
 
-This repository is the public supporting-material package for the accepted PRICAI 2026 paper. It contains the aggregate evidence needed to inspect and regenerate the paper-facing tables, figures, and evidence summary.
+```powershell
+python scripts/build_evidence_artifacts.py --input-path data/metric_table.json --repo-root .
+```
 
-The public package is not intended to contain:
-
-- primary training-result directories;
-- primary simulator traces;
-- policy parameter files;
-- machine-specific archives;
-- system-specific paths;
-- exploratory prototype results outside the reported matrix.
-
-This boundary keeps the repository aligned with the manuscript contribution. The package supports an inspectable aggregate metric-reporting claim; it does not present additional hidden experiments or a new algorithm result.
+Detailed environment, training, validation, and testing commands are defined in `REPRODUCE.md`.

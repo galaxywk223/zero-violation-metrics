@@ -1,10 +1,15 @@
 # Artifact Manifest
 
-## Public Input
+## Public Run-Level Data
 
 | Path | Role |
 | --- | --- |
-| `data/metric_table.json` | Sanitized 54-row aggregate input used to regenerate the paper-facing evidence. It contains no checkpoint paths, machine paths, logs, or primary traces. |
+| `data/run_manifest.json` | Index and coverage summary for all 54 method-environment-seed cells. |
+| `data/runs/<run_id>/config.json` | Recorded OmniSafe configuration for one training run. |
+| `data/runs/<run_id>/run_spec.json` | Portable execution specification and artifact mapping. |
+| `data/runs/<run_id>/progress.csv` | Full 5,000,000-step training curve. |
+| `data/runs/<run_id>/evaluation.json` | Fifty episode returns, costs, lengths, and summary metrics. |
+| `data/metric_table.json` | Sanitized 54-row aggregate input used to regenerate the paper-facing evidence. |
 
 ## Core Tables
 
@@ -86,7 +91,10 @@
 | `outline/zero_violation_empirical_study_skeleton.md` | Paper skeleton used to align narrative sections. |
 | `scripts/build_evidence_artifacts.py` | Deterministic artifact generator from the aggregate metric table archive. |
 | `scripts/test_build_evidence_artifacts.py` | Lightweight generator test using a temporary fake metric-table archive. |
+| `scripts/build_public_run_data.py` | Deterministic sanitizer and Release-archive builder for the canonical Round185 export. |
+| `scripts/validate_public_run_data.py` | Public validation of run coverage, episode records, metrics, and path sanitization. |
+| `scripts/test_build_public_run_data.py` | Unit tests for path sanitization and portable run specifications. |
 
-## Excluded Materials
+## Release Asset
 
-The package intentionally excludes primary simulator traces, policy parameter files, large result directories, machine-specific archives, and exploratory prototype outputs. These materials are not required to inspect the paper-level evidence and would expand the repository beyond its aggregate-evidence role.
+Release `pricai2026-camera-ready-data-v1` contains `round185_run_level_artifacts_sanitized.zip`, the complete sanitized 439-file Round185 execution export, and `SHA256SUMS.txt`.

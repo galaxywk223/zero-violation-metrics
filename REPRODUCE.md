@@ -1,14 +1,12 @@
-# Aggregate Evidence Reproduction
+# Code and Data Reproduction
 
 ## Environment
 
-The aggregate-evidence generator uses standard Python data-analysis packages:
+The public-data validator uses the Python standard library. The table and figure generator uses:
 
 - `pandas`
 - `numpy`
 - `matplotlib`
-
-No training framework is required to regenerate the derived tables and figures from the aggregate metric table.
 
 Install the pinned dependency ranges in a clean environment:
 
@@ -16,15 +14,18 @@ Install the pinned dependency ranges in a clean environment:
 python -m pip install -r requirements.txt
 ```
 
-## Input Contract
+## Public Data
 
-The public repository includes the sanitized aggregate input:
+The repository contains the complete reported run matrix:
 
 ```text
-data/metric_table.json
+data/runs/<run_id>/config.json
+data/runs/<run_id>/run_spec.json
+data/runs/<run_id>/progress.csv
+data/runs/<run_id>/evaluation.json
 ```
 
-The generator also accepts an external archive containing `summaries/metric_table.json` for compatible private or historical inputs.
+Each `evaluation.json` contains 50 episode returns, costs, lengths, and the corresponding summary metrics. `data/run_manifest.json` indexes all runs, while `data/metric_table.json` provides the aggregate generator input.
 
 The table must contain 54 completed rows:
 
@@ -32,30 +33,30 @@ The table must contain 54 completed rows:
 6 methods x 3 environments x 3 seeds
 ```
 
-Required fields include method, environment, seed, status, evaluation status, training budget, return, mean cost, safe rate, nonzero-cost frequency, tail costs, conditional unsafe severity, and maximum consecutive cost run.
+## Run-Level Validation
 
-## Validation
+Validate file coverage, the 2,700 episode records, metric-table consistency, and path sanitization:
 
-Run the structural check before rebuilding artifacts:
+```powershell
+python scripts/validate_public_run_data.py
+```
+
+The expected summary is:
+
+```text
+public_episodes=2700
+public_metric_rows=54
+public_private_text_hits=0
+public_runs=54
+```
+
+## Aggregate Validation and Regeneration
+
+Validate the aggregate input:
 
 ```powershell
 python scripts/build_evidence_artifacts.py --input-path data/metric_table.json --check-only
 ```
-
-The expected validation summary is:
-
-```text
-metric_archive_valid=true
-rows=54
-methods=6
-envs=3
-seeds=3
-completed=54
-completed_evaluations=54
-check_only=true
-```
-
-## Regeneration
 
 Regenerate all paper-facing aggregate evidence:
 
@@ -70,20 +71,23 @@ The command updates:
 - `notes/`
 - `outline/`
 
-## Lightweight Test
+## Tests
 
-Run the included fake-data test:
+Run the sanitizer and evidence-generator tests:
 
 ```powershell
-python scripts/test_build_evidence_artifacts.py
+python -m pytest scripts/test_build_public_run_data.py scripts/test_build_evidence_artifacts.py
 ```
 
-The test verifies that the generator can create tables, figures, notes, and outline files without reading or writing primary experiment-result directories.
+## Training Code
 
-## Evidence Boundary
+The exact camera-ready training-code snapshot is [`04966dd601c3778e14638b5af82f498c4812f29d`](https://github.com/galaxywk223/zero-violation-paper-workbench/tree/04966dd601c3778e14638b5af82f498c4812f29d/experiments). The Round185 entrypoints are:
 
-The reproduction path regenerates aggregate paper evidence only. It does not retrain policies, rerun simulators, modify Safe RL libraries, or require policy parameter files.
+```text
+experiments/scripts/run_cloud_batch_saferl_round185.py
+experiments/scripts/watch_cloud_batch_round185.py
+experiments/scripts/summarize_cloud_batch_round185.py
+experiments/scripts/export_cloud_batch_round185.py
+```
 
-## Public Evidence Boundary
-
-The aggregate package supports inspection and regeneration of the reported evidence. It does not support independent retraining, checkpoint-selection verification, or recovery of primary run traces. Regeneration scripts operate on the aggregate metric-table contract and do not depend on primary execution directories.
+The complete sanitized execution export is attached to Release `pricai2026-camera-ready-data-v1` as `round185_run_level_artifacts_sanitized.zip`.

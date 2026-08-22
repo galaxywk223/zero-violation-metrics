@@ -10,3 +10,4 @@ policy_parameters/
 primary_outputs/
 __pycache__/
 *.pyc
+dist/

@@ -1,0 +1,22 @@
+{
+  "artifacts": {
+    "config": "config.json",
+    "evaluation": "evaluation.json",
+    "progress": "progress.csv"
+  },
+  "batch_size": 64,
+  "device": "cpu",
+  "env_id": "SafetyPointButton1-v0",
+  "eval_episodes": 50,
+  "max_steps": 200,
+  "method": "FOCOPS",
+  "parallel": 1,
+  "run_id": "focops__SafetyPointButton1-v0__seed002",
+  "save_model_freq": 250,
+  "seed": 2,
+  "steps": 5000000,
+  "steps_per_epoch": 20000,
+  "torch_threads": 1,
+  "update_iters": 40,
+  "vector_env_nums": 8
+}
