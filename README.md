@@ -24,6 +24,7 @@ The public data cover all 54 method-environment-seed cells. Each run includes it
 - `notes/`: Evidence summary and supported / unsupported claim boundaries.
 - `outline/`: Paper skeleton for the empirical study.
 - `scripts/`: Run-data sanitizer, public-data validator, artifact generator, and tests.
+- `tables/camera_ready_statistics.{md,json}`: Stratified uncertainty, sliced correlations, and pairwise ranking diagnostics used in the camera-ready revision.
 - `requirements.txt`: Minimal Python dependencies for generation and validation.
 - `ARTIFACT_MANIFEST.md`: File-level manifest and role of each artifact group.
 - `REPRODUCE.md`: Regeneration and validation instructions.

@@ -41,6 +41,8 @@
 | `tables/method_rankings.md` | Descriptive method rankings by aggregate metric families. |
 | `tables/metric_disagreement_summary.md` | Summary of metric-dependent ordering differences. |
 | `tables/statistical_reporting_checklist.md` | Checklist for descriptive uncertainty and claim boundaries. |
+| `tables/camera_ready_statistics.md` | Environment-stratified intervals, environment/method correlation slices, and pairwise ranking disagreements used in the camera-ready manuscript. |
+| `tables/camera_ready_statistics.json` | Machine-readable camera-ready statistics generated from the public 54-row matrix. |
 
 ## Core Figures
 
@@ -94,6 +96,8 @@
 | `scripts/build_public_run_data.py` | Deterministic sanitizer and Release-archive builder for the canonical Round185 export. |
 | `scripts/validate_public_run_data.py` | Public validation of run coverage, episode records, metrics, and path sanitization. |
 | `scripts/test_build_public_run_data.py` | Unit tests for path sanitization and portable run specifications. |
+| `scripts/analyze_camera_ready_statistics.py` | Deterministic environment-stratified bootstrap, sliced correlations, and pairwise ranking diagnostics used in the camera-ready revision. |
+| `scripts/test_analyze_camera_ready_statistics.py` | Unit tests for the camera-ready statistical analysis. |
 
 ## Release Asset
 

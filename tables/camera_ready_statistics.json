@@ -1,0 +1,434 @@
+{
+  "bootstrap": {
+    "design": "Within each method, resample the three seeds separately inside each environment, then equally average the three environment means.",
+    "rows": [
+      {
+        "ci95_high": 5.581939759076683,
+        "ci95_low": 5.169742693411345,
+        "mean": 5.376469871256747,
+        "method": "PPO",
+        "metric": "return",
+        "resamples": 10000,
+        "seed": 185
+      },
+      {
+        "ci95_high": 0.36000000000000004,
+        "ci95_low": 0.2977777777777778,
+        "mean": 0.3311111111111111,
+        "method": "PPO",
+        "metric": "safe_rate",
+        "resamples": 10000,
+        "seed": 185
+      },
+      {
+        "ci95_high": 48.58888888888887,
+        "ci95_low": 44.188888888888876,
+        "mean": 46.38888888888888,
+        "method": "PPO",
+        "metric": "p95_cost",
+        "resamples": 10000,
+        "seed": 185
+      },
+      {
+        "ci95_high": 2.820505068571718,
+        "ci95_low": 2.2460340790132927,
+        "mean": 2.529276946700059,
+        "method": "PPOLag",
+        "metric": "return",
+        "resamples": 10000,
+        "seed": 185
+      },
+      {
+        "ci95_high": 0.7355555555555555,
+        "ci95_low": 0.6622222222222223,
+        "mean": 0.7,
+        "method": "PPOLag",
+        "metric": "safe_rate",
+        "resamples": 10000,
+        "seed": 185
+      },
+      {
+        "ci95_high": 36.06666666666664,
+        "ci95_low": 31.472222222222204,
+        "mean": 33.74999999999998,
+        "method": "PPOLag",
+        "metric": "p95_cost",
+        "resamples": 10000,
+        "seed": 185
+      },
+      {
+        "ci95_high": 3.4281884527472717,
+        "ci95_low": 2.6763257601399686,
+        "mean": 3.063239525327186,
+        "method": "FOCOPS",
+        "metric": "return",
+        "resamples": 10000,
+        "seed": 185
+      },
+      {
+        "ci95_high": 0.7022222222222223,
+        "ci95_low": 0.6022222222222222,
+        "mean": 0.6533333333333333,
+        "method": "FOCOPS",
+        "metric": "safe_rate",
+        "resamples": 10000,
+        "seed": 185
+      },
+      {
+        "ci95_high": 31.09999999999999,
+        "ci95_low": 19.75555555555555,
+        "mean": 25.572222222222212,
+        "method": "FOCOPS",
+        "metric": "p95_cost",
+        "resamples": 10000,
+        "seed": 185
+      },
+      {
+        "ci95_high": 3.9143023213746653,
+        "ci95_low": 3.438991834072219,
+        "mean": 3.681546613976311,
+        "method": "CPO",
+        "metric": "return",
+        "resamples": 10000,
+        "seed": 185
+      },
+      {
+        "ci95_high": 0.6533333333333333,
+        "ci95_low": 0.5800000000000001,
+        "mean": 0.62,
+        "method": "CPO",
+        "metric": "safe_rate",
+        "resamples": 10000,
+        "seed": 185
+      },
+      {
+        "ci95_high": 34.11111111111111,
+        "ci95_low": 28.716666666666658,
+        "mean": 31.466666666666658,
+        "method": "CPO",
+        "metric": "p95_cost",
+        "resamples": 10000,
+        "seed": 185
+      },
+      {
+        "ci95_high": 1.4134714762965164,
+        "ci95_low": 0.7693095143104053,
+        "mean": 1.1019471900867148,
+        "method": "CPPOPID",
+        "metric": "return",
+        "resamples": 10000,
+        "seed": 185
+      },
+      {
+        "ci95_high": 0.8488888888888889,
+        "ci95_low": 0.7866666666666666,
+        "mean": 0.82,
+        "method": "CPPOPID",
+        "metric": "safe_rate",
+        "resamples": 10000,
+        "seed": 185
+      },
+      {
+        "ci95_high": 34.34444444444443,
+        "ci95_low": 14.105555555555542,
+        "mean": 23.638888888888875,
+        "method": "CPPOPID",
+        "metric": "p95_cost",
+        "resamples": 10000,
+        "seed": 185
+      },
+      {
+        "ci95_high": 1.289158045512579,
+        "ci95_low": 1.0491668254937958,
+        "mean": 1.162796648421834,
+        "method": "PPOSaute",
+        "metric": "return",
+        "resamples": 10000,
+        "seed": 185
+      },
+      {
+        "ci95_high": 0.8688888888888889,
+        "ci95_low": 0.7866666666666666,
+        "mean": 0.8266666666666667,
+        "method": "PPOSaute",
+        "metric": "safe_rate",
+        "resamples": 10000,
+        "seed": 185
+      },
+      {
+        "ci95_high": 51.788888888888835,
+        "ci95_low": 14.24999999999997,
+        "mean": 30.04444444444441,
+        "method": "PPOSaute",
+        "metric": "p95_cost",
+        "resamples": 10000,
+        "seed": 185
+      }
+    ]
+  },
+  "correlations": {
+    "environment": [
+      {
+        "group": "SafetyPointGoal1-v0",
+        "group_type": "environment",
+        "n": 18,
+        "pearson_r": -0.8991683965632238,
+        "x_metric": "mean_cost",
+        "y_metric": "safe_rate"
+      },
+      {
+        "group": "SafetyPointGoal1-v0",
+        "group_type": "environment",
+        "n": 18,
+        "pearson_r": 0.3302780957707354,
+        "x_metric": "safe_rate",
+        "y_metric": "max_consecutive_cost_run"
+      },
+      {
+        "group": "SafetyPointButton1-v0",
+        "group_type": "environment",
+        "n": 18,
+        "pearson_r": -0.9326971029650003,
+        "x_metric": "mean_cost",
+        "y_metric": "safe_rate"
+      },
+      {
+        "group": "SafetyPointButton1-v0",
+        "group_type": "environment",
+        "n": 18,
+        "pearson_r": -0.46747016810273173,
+        "x_metric": "safe_rate",
+        "y_metric": "max_consecutive_cost_run"
+      },
+      {
+        "group": "SafetyCarGoal1-v0",
+        "group_type": "environment",
+        "n": 18,
+        "pearson_r": -0.8017718101097956,
+        "x_metric": "mean_cost",
+        "y_metric": "safe_rate"
+      },
+      {
+        "group": "SafetyCarGoal1-v0",
+        "group_type": "environment",
+        "n": 18,
+        "pearson_r": 0.284954158392154,
+        "x_metric": "safe_rate",
+        "y_metric": "max_consecutive_cost_run"
+      }
+    ],
+    "method": [
+      {
+        "group": "PPO",
+        "group_type": "method",
+        "n": 9,
+        "pearson_r": -0.9345832090922199,
+        "x_metric": "mean_cost",
+        "y_metric": "safe_rate"
+      },
+      {
+        "group": "PPO",
+        "group_type": "method",
+        "n": 9,
+        "pearson_r": -0.9170393745587893,
+        "x_metric": "safe_rate",
+        "y_metric": "max_consecutive_cost_run"
+      },
+      {
+        "group": "PPOLag",
+        "group_type": "method",
+        "n": 9,
+        "pearson_r": -0.9078235141637834,
+        "x_metric": "mean_cost",
+        "y_metric": "safe_rate"
+      },
+      {
+        "group": "PPOLag",
+        "group_type": "method",
+        "n": 9,
+        "pearson_r": -0.4444152753342913,
+        "x_metric": "safe_rate",
+        "y_metric": "max_consecutive_cost_run"
+      },
+      {
+        "group": "FOCOPS",
+        "group_type": "method",
+        "n": 9,
+        "pearson_r": -0.9602367778769653,
+        "x_metric": "mean_cost",
+        "y_metric": "safe_rate"
+      },
+      {
+        "group": "FOCOPS",
+        "group_type": "method",
+        "n": 9,
+        "pearson_r": -0.8612175170008947,
+        "x_metric": "safe_rate",
+        "y_metric": "max_consecutive_cost_run"
+      },
+      {
+        "group": "CPO",
+        "group_type": "method",
+        "n": 9,
+        "pearson_r": -0.8565217745037556,
+        "x_metric": "mean_cost",
+        "y_metric": "safe_rate"
+      },
+      {
+        "group": "CPO",
+        "group_type": "method",
+        "n": 9,
+        "pearson_r": -0.46648675234125364,
+        "x_metric": "safe_rate",
+        "y_metric": "max_consecutive_cost_run"
+      },
+      {
+        "group": "CPPOPID",
+        "group_type": "method",
+        "n": 9,
+        "pearson_r": -0.5157854356049693,
+        "x_metric": "mean_cost",
+        "y_metric": "safe_rate"
+      },
+      {
+        "group": "CPPOPID",
+        "group_type": "method",
+        "n": 9,
+        "pearson_r": 0.29190696310797437,
+        "x_metric": "safe_rate",
+        "y_metric": "max_consecutive_cost_run"
+      },
+      {
+        "group": "PPOSaute",
+        "group_type": "method",
+        "n": 9,
+        "pearson_r": -0.5627619167135747,
+        "x_metric": "mean_cost",
+        "y_metric": "safe_rate"
+      },
+      {
+        "group": "PPOSaute",
+        "group_type": "method",
+        "n": 9,
+        "pearson_r": -0.26158190225205324,
+        "x_metric": "safe_rate",
+        "y_metric": "max_consecutive_cost_run"
+      }
+    ]
+  },
+  "overall": {
+    "CPO": {
+      "conditional_unsafe_severity": 17.910153793861227,
+      "max_consecutive_cost_run": 36.0,
+      "mean_cost": 6.859999999999999,
+      "p95_cost": 31.466666666666658,
+      "return": 3.681546613976311,
+      "safe_rate": 0.62
+    },
+    "CPPOPID": {
+      "conditional_unsafe_severity": 24.167476042476043,
+      "max_consecutive_cost_run": 60.333333333333336,
+      "mean_cost": 4.144444444444444,
+      "p95_cost": 23.638888888888875,
+      "return": 1.1019471900867148,
+      "safe_rate": 0.82
+    },
+    "FOCOPS": {
+      "conditional_unsafe_severity": 15.976455026455024,
+      "max_consecutive_cost_run": 34.333333333333336,
+      "mean_cost": 5.842222222222222,
+      "p95_cost": 25.572222222222212,
+      "return": 3.063239525327186,
+      "safe_rate": 0.6533333333333333
+    },
+    "PPO": {
+      "conditional_unsafe_severity": 22.738890549882232,
+      "max_consecutive_cost_run": 47.0,
+      "mean_cost": 15.513333333333334,
+      "p95_cost": 46.38888888888888,
+      "return": 5.376469871256747,
+      "safe_rate": 0.33111111111111113
+    },
+    "PPOLag": {
+      "conditional_unsafe_severity": 24.727851826536035,
+      "max_consecutive_cost_run": 54.111111111111114,
+      "mean_cost": 7.566666666666666,
+      "p95_cost": 33.74999999999998,
+      "return": 2.529276946700059,
+      "safe_rate": 0.7
+    },
+    "PPOSaute": {
+      "conditional_unsafe_severity": 26.981421356421357,
+      "max_consecutive_cost_run": 60.111111111111114,
+      "mean_cost": 4.742222222222222,
+      "p95_cost": 30.04444444444441,
+      "return": 1.162796648421834,
+      "safe_rate": 0.8266666666666667
+    }
+  },
+  "ranking_disagreements": [
+    {
+      "interpretation": "PPOLag has the higher safe rate, whereas CPO has the lower mean cost and higher return.",
+      "left_method": "PPOLag",
+      "left_values": {
+        "conditional_unsafe_severity": 24.727851826536035,
+        "max_consecutive_cost_run": 54.111111111111114,
+        "mean_cost": 7.566666666666666,
+        "p95_cost": 33.74999999999998,
+        "return": 2.529276946700059,
+        "safe_rate": 0.7
+      },
+      "right_method": "CPO",
+      "right_values": {
+        "conditional_unsafe_severity": 17.910153793861227,
+        "max_consecutive_cost_run": 36.0,
+        "mean_cost": 6.859999999999999,
+        "p95_cost": 31.466666666666658,
+        "return": 3.681546613976311,
+        "safe_rate": 0.62
+      }
+    },
+    {
+      "interpretation": "PPOSaute has the slightly higher safe rate, whereas CPPOPID has the lower mean and p95 cost.",
+      "left_method": "CPPOPID",
+      "left_values": {
+        "conditional_unsafe_severity": 24.167476042476043,
+        "max_consecutive_cost_run": 60.333333333333336,
+        "mean_cost": 4.144444444444444,
+        "p95_cost": 23.638888888888875,
+        "return": 1.1019471900867148,
+        "safe_rate": 0.82
+      },
+      "right_method": "PPOSaute",
+      "right_values": {
+        "conditional_unsafe_severity": 26.981421356421357,
+        "max_consecutive_cost_run": 60.111111111111114,
+        "mean_cost": 4.742222222222222,
+        "p95_cost": 30.04444444444441,
+        "return": 1.162796648421834,
+        "safe_rate": 0.8266666666666667
+      }
+    }
+  ],
+  "scope": {
+    "environments": [
+      "SafetyPointGoal1-v0",
+      "SafetyPointButton1-v0",
+      "SafetyCarGoal1-v0"
+    ],
+    "methods": [
+      "PPO",
+      "PPOLag",
+      "FOCOPS",
+      "CPO",
+      "CPPOPID",
+      "PPOSaute"
+    ],
+    "rows": 54,
+    "seeds": [
+      1,
+      2,
+      3
+    ]
+  }
+}

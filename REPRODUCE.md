@@ -64,6 +64,12 @@ Regenerate all paper-facing aggregate evidence:
 python scripts/build_evidence_artifacts.py --input-path data/metric_table.json --repo-root .
 ```
 
+Generate the camera-ready stratified statistics:
+
+```powershell
+python scripts/analyze_camera_ready_statistics.py
+```
+
 The command updates:
 
 - `tables/`
